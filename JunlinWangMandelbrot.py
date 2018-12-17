@@ -15,9 +15,9 @@ try:
 except ImportError:
     import tkinter as tk
     from tkinter import ttk
-import time
-import pyximport; pyximport.install()
-import MandelComputation
+
+# import pyximport; pyximport.install()
+# import MandelComputation
 
 class Great:
     def __init__(self, master, menubar):
@@ -185,7 +185,7 @@ class Great:
         p1 = graphicsr.Point(self.ox1*100, self.oy1*100)
         p2 = graphicsr.Point(self.ox2*100, self.oy2*100)
         # I use zoom in with the current graph's corners so it doesn't change the zoom but can update the color
-        self.win, self.ox1, self.ox2, self.oy1, self.oy2 = MandelComputation.zoomin(self.ox1, self.ox2, self.oy1, self.oy2, width, height, 100, self.frame1, self.division.get(), self.addition.get(), self.win, self.abackground,  colors, color, p1, p2)
+        #self.win, self.ox1, self.ox2, self.oy1, self.oy2 = MandelComputation.zoomin(self.ox1, self.ox2, self.oy1, self.oy2, width, height, 100, self.frame1, self.division.get(), self.addition.get(), self.win, self.abackground,  colors, color, p1, p2)
 
 
     def submit1(self):
@@ -220,12 +220,12 @@ class Great:
 
         start = time.clock()
         # If grey Scale is selected, use the division and addition for grey scaling
-        if color == 2:
-            MandelComputation.cvalue(width, height,self.win, iteration, colors, divisionG, additionG, self.abackground, color)
-        else:
-            MandelComputation.cvalue(width, height,self.win, iteration, colors, division, addition, self.abackground, color)
+        # if color == 2:
+        #     MandelComputation.cvalue(width, height,self.win, iteration, colors, divisionG, additionG, self.abackground, color)
+        # else:
+        #     MandelComputation.cvalue(width, height,self.win, iteration, colors, division, addition, self.abackground, color)
         end = time.clock()
-        print end - start
+        print (end - start)
 
     def refine(self):
         # This function refines the inverse julia set into brute forced julia set
@@ -238,7 +238,7 @@ class Great:
         y = self.dy
         c = complex(x/self.width*2.0, y/self.height*2.0)
         # call the brute force function
-        MandelComputation.bruteForce(100, self.win2, self.width2, self.height, c.real, c.imag, self.divisionG.get(), self.additionG.get())
+        # MandelComputation.bruteForce(100, self.win2, self.width2, self.height, c.real, c.imag, self.divisionG.get(), self.additionG.get())
     def drawJulia(self, event):
         # This function draws the inverse Julia Set as you click and drag on the Mandelbrot Set window
         # It's fast but less detailed
@@ -250,7 +250,7 @@ class Great:
         self.dy = -1 * event.y + 200.0
         c = complex(self.dx/self.width*2, self.dy/self.height*2)
         # Call the inverse function with necessary arguments
-        MandelComputation.inverse(2000, 4.0, c, self.win2)
+        # MandelComputation.inverse(2000, 4.0, c, self.win2)
 
     ''' The following three functions provide the program the ability to
     switch around three color options by pressing the buttons.
@@ -446,7 +446,7 @@ class Great:
             colors = self.colorscheme2(self.col1.get(), self.col2.get(), 16)
             width = self.width
             height = self.height
-            self.win, self.ox1, self.ox2, self.oy1, self.oy2 = MandelComputation.zoomin(self.ox1, self.ox2, self.oy1, self.oy2, width, height, 100, self.frame1, self.division.get(), self.addition.get(), win, self.abackground,  colors, color, self.clicks[0], self.clicks[1])
+            # self.win, self.ox1, self.ox2, self.oy1, self.oy2 = MandelComputation.zoomin(self.ox1, self.ox2, self.oy1, self.oy2, width, height, 100, self.frame1, self.division.get(), self.addition.get(), win, self.abackground,  colors, color, self.clicks[0], self.clicks[1])
             self.clicks = []
             self.clicksCount = 0
     def help(self):

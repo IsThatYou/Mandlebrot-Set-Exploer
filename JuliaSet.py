@@ -69,7 +69,7 @@ def modifier(num, iteration):
 
 
     if hue > 360.0:
-        print hue
+        print (hue)
 
     while hue< 0.0:
         hue+=1.0
